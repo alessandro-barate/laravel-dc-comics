@@ -12,7 +12,8 @@ class ComicsSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = config('comic');
+        $data = config('comics');
+
         print_r($data);
         die();
     }
