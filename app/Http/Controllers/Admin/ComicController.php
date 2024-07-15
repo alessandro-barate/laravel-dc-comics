@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class ComicController extends Controller
@@ -39,7 +40,9 @@ class ComicController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $comics = Comic::find($id);
+
+        return view('comics.show', compact('comics'));
     }
 
     /**
