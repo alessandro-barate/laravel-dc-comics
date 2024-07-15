@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ComicController;
 use App\Http\Controllers\Guest\ComicsController;
+use App\Models\Comic;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,5 @@ use Illuminate\Support\Facades\Route;
 
 // Homepage route
 Route::get('/', [ComicsController::class, 'index']);
+
+Route::resource('comics', ComicController::class);
