@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Info fumetto</title>
 </head>
+
 <body>
+
+    @include('shared.header')
+
     <h1>{{ $comic->title }}</h1>
     <p>{{ $comic->description }}</p>
     <a href="{{ route('comics.index') }}">Torna alla home</a>
+
+    @include('shared.footer')
+    
 </body>
+
 </html>

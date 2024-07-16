@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +10,9 @@
     <title>Aggiungi un fumetto alla tua collezione</title>
 </head>
 <body>
+
+    @include('shared.header')
+
     <main>
         <div class="container">
             <div class="row">
@@ -28,7 +34,17 @@
                     @csrf
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Titolo</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Batman vs. Joker#2">
+                        <input type="text" id="exampleFormControlInput1" class="form-control  
+                        @if ($errors->get('title')) is-invalid @endif" name="title" placeholder="Titolo fumetto"
+                        value="{{ old('title') }}">
+
+                        @if ($errors->get('title'))
+                            @foreach ($errors->get('title') as $error)
+                                <div class="invalid-feedback">
+                                    {{ $error }}
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -36,5 +52,8 @@
             </div>
         </div>
     </main>
+
+    @include('shared.footer')
+
 </body>
 </html>

@@ -10,8 +10,6 @@
 </head>
 
 <body>
-
-    @include('shared.header')
     
     <main>
         <div class="container">
@@ -20,8 +18,6 @@
             </div>
         </div>
     </main>
-
-    @include('shared.footer')
     
 
     {{-- Example tag for images --}}
