@@ -51,6 +51,10 @@ class ComicController extends Controller
     {
         // $comics = Comic::find($id);
 
+        if ($comic === null) {
+            return redirect()->route('redirection');
+        }
+
         return view('comics.show', compact('comic'));
     }
 
