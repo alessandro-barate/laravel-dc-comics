@@ -52,7 +52,7 @@ class ComicController extends Controller
         // $comics = Comic::find($id);
 
         if ($comic === null) {
-            return redirect()->route('redirection');
+            return redirect()->route('errors.404');
         }
 
         return view('comics.show', compact('comic'));
@@ -63,7 +63,7 @@ class ComicController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('comics.edit');
     }
 
     /**
