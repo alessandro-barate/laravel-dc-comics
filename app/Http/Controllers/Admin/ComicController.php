@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreComicRequest;
 use App\Models\Comic;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -31,17 +32,18 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-        $data = $this->validation($request->all());
-        $comic = new Comic();
+        // Qui sotto la validazione è affidata al controller
+        // $data = $this->validation($request->all());
 
+        // Qui sotto la validazione è affidata al Form Request
+        $data = $request->validated();
+        $comic = new Comic();
         $comic->fill($data);
         $comic->save();
 
-        return redirect()->route('comics.show', $comic->id);
-
-        
+        return redirect()->route('comics.show', $comic->id); 
     }
 
     /**
@@ -72,10 +74,11 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreComicRequest $request, string $id)
     {
         $comic = Comic::findOrFail($id);
-        $data = $this->validation($request->all());
+        // $data = $this->validation($request->all());
+        $data = $request->validated();
         $comic->update($data);
         $comic->title = $data['title'];
         $comic->save();
@@ -94,17 +97,6 @@ class ComicController extends Controller
         $comic->delete();
 
         return redirect()->route('comics.index');
-    }
-
-    // Validazione dati
-    public function validation($data) 
-    {
-
-        $validation = Validator::make($data, [
-            'title' => 'required|max:100',
-        ])->validate();
-        
-        return $validation;
     }
 
 }

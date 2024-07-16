@@ -11,7 +11,7 @@ class StoreComicRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,20 @@ class StoreComicRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+                'title' => 'required|max:100',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+           'title.required' => 'Un supereroe senza nome che supereroe è? Allo stesso modo un fumetto senza titolo non è un fumetto!' 
         ];
     }
 }
+
+
+// Request -> default
+// ComicRequest -> aggiornamento e creazione
+// StoreComicRequest -> richieste di creazione
+// UpdateComicRequest -> richieste di aggiornamento
