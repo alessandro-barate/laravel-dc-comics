@@ -12,7 +12,7 @@
         @csrf
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Titolo</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="exampleFormControlInput1" placeholder="Batman vs. Joker#2">
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Batman vs. Joker#2">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
