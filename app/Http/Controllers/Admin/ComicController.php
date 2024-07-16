@@ -34,13 +34,13 @@ class ComicController extends Controller
     {
         $data = $request->all();
 
-        $comics = new Comic();
+        $comic = new Comic();
 
-        $comics->title = $data['title'];
+        $comic->title = $data['title'];
 
-        $comics->save();
+        $comic->save();
 
-        return redirect()->route('comics.show', $comics->id);
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
@@ -51,7 +51,7 @@ class ComicController extends Controller
     {
         // $comics = Comic::find($id);
 
-        return view('comics.show', compact('comics'));
+        return view('comics.show', compact('comic'));
     }
 
     /**

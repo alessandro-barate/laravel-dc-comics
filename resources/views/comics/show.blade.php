@@ -7,8 +7,8 @@
     <title>Info fumetto</title>
 </head>
 <body>
-    <h1>{{ $comics->title }}</h1>
-    <p>{{ $comics->description }}</p>
+    <h1>{{ $comic->title }}</h1>
+    <p>{{ $comic->description }}</p>
     <a href="{{ route('comics.index') }}">Torna alla home</a>
 </body>
 </html>
