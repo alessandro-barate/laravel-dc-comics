@@ -12,7 +12,14 @@
         @foreach ($comics as $comic)
         <li>
             <a href="{{ route('comics.show', $comic->id) }}">{{ $comic->title }}</a> - 
-            <a href="{{ route('comics.edit', $comic->id) }}">Modifica</a></li>    
+            <a href="{{ route('comics.edit', $comic->id) }}">Modifica</a>
+
+            <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button>Cancella</button>
+            </form>
+        </li>    
         @endforeach
     </ul>
 </body>
