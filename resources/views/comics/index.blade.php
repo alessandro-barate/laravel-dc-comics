@@ -7,6 +7,7 @@
     <title>DC Comics</title>
 </head>
 <body>
+    <a href="{{ route('comics.create') }}">Aggiungi il tuo fumetto</a>
     <ul>
         @foreach ($comics as $comic)
         <li>
