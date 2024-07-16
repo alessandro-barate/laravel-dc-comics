@@ -11,7 +11,8 @@
     <ul>
         @foreach ($comics as $comic)
         <li>
-            <a href="{{ route('comics.show', $comic->id) }}">{{ $comic->title }}</a></li>    
+            <a href="{{ route('comics.show', $comic->id) }}">{{ $comic->title }}</a> - 
+            <a href="{{ route('comics.edit', $comic->id) }}">Modifica</a></li>    
         @endforeach
     </ul>
 </body>
