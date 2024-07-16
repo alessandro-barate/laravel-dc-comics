@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -32,20 +33,15 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        // Validazione dati
-        $request->validate([
-            'title' => 'required|max:100',
-        ]);
-
+        $data = $this->validation($request->all());
         $comic = new Comic();
 
-        $comic->title = $data['title'];
-
+        $comic->fill($data);
         $comic->save();
 
         return redirect()->route('comics.show', $comic->id);
+
+        
     }
 
     /**
@@ -99,4 +95,16 @@ class ComicController extends Controller
 
         return redirect()->route('comics.index');
     }
+
+    // Validazione dati
+    public function validation($data) 
+    {
+
+        $validation = Validator::make($data, [
+            'title' => 'required|max:100',
+        ])->validate();
+        
+        return $validation;
+    }
+
 }
